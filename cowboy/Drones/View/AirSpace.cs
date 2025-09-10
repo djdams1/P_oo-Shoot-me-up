@@ -6,8 +6,13 @@ namespace Drones
 
     public partial class AirSpace : Form
     {
-        public static readonly int WIDTH = 1200;        // Dimensions of the airspace
-        public static readonly int HEIGHT = 600;
+        public static readonly int WIDTH = 1920;        // Dimensions of the airspace
+        public static readonly int HEIGHT = 1080;
+        private Image backgroundImage = Image.FromFile(@"D:\Poo\P_oo-Shoot-me-up\cowboy\Drones\Resources\background1.png");
+        private Joueur joueur;
+
+
+
 
         // La flotte est l'ensemble des drones qui évoluent dans notre espace aérien
         private List<Drone> fleet;
@@ -17,6 +22,8 @@ namespace Drones
 
         // Initialisation de l'espace aérien avec un certain nombre de drones
         public AirSpace(List<Drone> fleet)
+
+
         {
             InitializeComponent();
             // Gets a reference to the current BufferedGraphicsContext
@@ -25,17 +32,20 @@ namespace Drones
             // dimensions the same size as the drawing surface of the form.
             airspace = currentContext.Allocate(this.CreateGraphics(), this.DisplayRectangle);
             this.fleet = fleet;
+
+            joueur = new Joueur();
         }
 
         // Affichage de la situation actuelle
         private void Render()
         {
-            airspace.Graphics.Clear(Color.AliceBlue);
+            airspace.Graphics.DrawImage(backgroundImage, new Rectangle(0, 0, Width, Height));
 
             // draw drones
             foreach (Drone drone in fleet)
             {
                 drone.Render(airspace);
+                joueur.Render(airspace);
             }
 
             airspace.Render();
@@ -47,6 +57,7 @@ namespace Drones
             foreach (Drone drone in fleet)
             {
                 drone.Update(interval);
+                Joueur.Update();
             }
         }
 
