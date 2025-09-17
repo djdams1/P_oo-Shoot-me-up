@@ -9,6 +9,7 @@
         private int _y = AirSpace.HEIGHT - 200;
         private int _direction = 100;
         private int _cooldownPV = 0;
+        private DateTime lastTireCall = DateTime.MinValue;
 
         // Constructeur
         public Joueur()
@@ -60,6 +61,21 @@
                 {
                     _vie++;
                 }
+            }
+
+        }
+        public void tire()
+        {
+
+            DateTime now = DateTime.Now;
+
+            // Vérifie si au moins 1 seconde s'est écoulée depuis le dernier appel
+            if ((now - lastTireCall).TotalSeconds >= 1)
+            {
+                MessageBox.Show("tire après 1s");
+
+                // Met à jour le dernier appel
+                lastTireCall = now;
             }
 
         }

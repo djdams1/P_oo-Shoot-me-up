@@ -51,6 +51,9 @@
 
                     joueur.droit();
                     break;
+                case Keys.Space:
+                    joueur.tire();
+                    break;
             }
         }
 
