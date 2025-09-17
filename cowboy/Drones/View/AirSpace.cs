@@ -6,12 +6,12 @@
 
     public partial class AirSpace : Form
     {
-        public static readonly int WIDTH = 1500;        // Dimensions of the airspace
-        public static readonly int HEIGHT = 700;
+        public static readonly int WIDTH = 1920;        // Dimensions of the airspace
+        public static readonly int HEIGHT = 1080;
         private Image backgroundImage = Image.FromFile(@"D:\Poo\P_oo-Shoot-me-up\cowboy\Drones\Resources\background1.png");
         private Joueur joueur;
 
-        
+
 
 
 
@@ -43,13 +43,13 @@
             switch (e.KeyCode)
             {
                 case Keys.A:
-                    
-                    joueur.gauche(); 
+
+                    joueur.gauche();
                     break;
 
                 case Keys.D:
-                    
-                    joueur.droit(); 
+
+                    joueur.droit();
                     break;
             }
         }
@@ -73,14 +73,14 @@
         // Calcul du nouvel état après que 'interval' millisecondes se sont écoulées
         private void Update(int interval)
         {
-            
+
             foreach (Drone drone in fleet)
             {
                 drone.Update(interval);
-                
-                
+
+
             }
-            
+
         }
 
         // Méthode appelée à chaque frame
@@ -88,6 +88,11 @@
         {
             this.Update(ticker.Interval);
             this.Render();
+        }
+
+        private void AirSpace_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
