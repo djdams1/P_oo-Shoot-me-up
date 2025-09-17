@@ -5,10 +5,10 @@
     {
         public static readonly int FULLCHARGE = 1000;   // Charge maximale de la batterie
         private int _vie = 50;                            // La charge actuelle de la batterie                        // Un nom
-        private int _x = AirSpace.WIDTH /2;                                 // Position en X depuis la gauche de l'espace aérien
-        private int _y = AirSpace.HEIGHT-200;
+        private int _x = AirSpace.WIDTH / 2;                                 // Position en X depuis la gauche de l'espace aérien
+        private int _y = AirSpace.HEIGHT - 200;
         private int _direction = 100;
-        private int _time = 0;
+        private int _cooldownPV = 0;
 
         // Constructeur
         public Joueur()
@@ -23,36 +23,45 @@
         // que 'interval' millisecondes se sont écoulées
         public void gauche()
         {
-            _x-=15;
-            
-            if (_direction == 100) 
+            if (_x > 90)
             {
-                _x += 100;
-                _direction = -100;
+                _x -= 15;
+
+                if (_direction == 100)
+                {
+                    _x += 100;
+                    _direction = -100;
+                }
+
             }
-                
+
         }
         public void droit()
         {
-            _x+=15;
-            if (_direction == -100)
+            if (_x < AirSpace.WIDTH - 100)
             {
-                _x -= 100;
-                _direction = 100;
+                _x += 15;
+                if (_direction == -100)
+                {
+                    _x -= 100;
+                    _direction = 100;
+                }
             }
+
         }
         public void addvie()
         {
-            _time++;
-           if(_time % 20 == 0)
+
+            _cooldownPV++;
+            if (_cooldownPV % 20 == 0)
             {
-                _time = 0;
+                _cooldownPV = 0;
                 if (_vie <= 99)
                 {
                     _vie++;
                 }
             }
-            
+
         }
 
     }
