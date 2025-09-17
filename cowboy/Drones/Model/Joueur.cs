@@ -69,12 +69,12 @@
 
             DateTime now = DateTime.Now;
 
-            // Vérifie si au moins 1 seconde s'est écoulée depuis le dernier appel
+            
             if ((now - lastTireCall).TotalSeconds >= 1)
             {
                 MessageBox.Show("tire après 1s");
 
-                // Met à jour le dernier appel
+                
                 lastTireCall = now;
             }
 
