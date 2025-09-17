@@ -73,7 +73,7 @@
         // Calcul du nouvel état après que 'interval' millisecondes se sont écoulées
         private void Update(int interval)
         {
-
+            joueur.addvie();
             foreach (Drone drone in fleet)
             {
                 drone.Update(interval);

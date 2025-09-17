@@ -8,6 +8,7 @@
         private int _x = AirSpace.WIDTH /2;                                 // Position en X depuis la gauche de l'espace aérien
         private int _y = AirSpace.HEIGHT-200;
         private int _direction = 100;
+        private int _time = 0;
 
         // Constructeur
         public Joueur()
@@ -39,6 +40,19 @@
                 _x -= 100;
                 _direction = 100;
             }
+        }
+        public void addvie()
+        {
+            _time++;
+           if(_time % 20 == 0)
+            {
+                _time = 0;
+                if (_vie <= 99)
+                {
+                    _vie++;
+                }
+            }
+            
         }
 
     }
